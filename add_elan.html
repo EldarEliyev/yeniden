@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elan Yerləşdir - tap.az</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-th"></i>
+                <a href="elan_list.html" class="logo">tap.az</a>
+            </div>
+            <div class="header-actions">
+                <a href="elan_list.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Geri
+                </a>
+                <div class="language-toggle">
+                    <span>Azerbaijani</span>
+                    <span class="active">English</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="add-ad-form">
+                <h1 class="page-title">
+                    <i class="fas fa-plus-circle"></i>
+                    Yeni Elan Yerləşdir
+                </h1>
+
+                <form id="addAdForm" class="ad-form">
+                    <!-- Category Selection -->
+                    <div class="form-section">
+                        <h2 class="section-title">Kateqoriya Seçin</h2>
+                        <div class="category-selection">
+                            <select id="mainCategory" class="form-select" required>
+                                <option value="">Əsas kateqoriya seçin</option>
+                                <option value="transport">Nəqliyyat</option>
+                                <option value="electronics">Elektronika</option>
+                                <option value="home-garden">Ev və bağ üçün</option>
+                                <option value="spare-parts">Ehtiyat hissələr və aksesuarlar</option>
+                                <option value="real-estate">Daşınmaz əmlak</option>
+                                <option value="services">Xidmətlər və biznes</option>
+                                <option value="phones">Telefonlar</option>
+                                <option value="appliances">Məişət texnikası</option>
+                                <option value="children">Uşaq dünyası</option>
+                                <option value="animals">Heyvanlar</option>
+                                <option value="jobs">İş elanları</option>
+                                <option value="school">Məktəblilər üçün</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Əsas Məlumatlar</h2>
+                        
+                        <div class="form-group">
+                            <label for="adTitle">Elanın başlığı *</label>
+                            <input type="text" id="adTitle" name="title" class="form-input" placeholder="Məsələn: iPhone 14 Pro 128GB Deep Purple" required maxlength="70">
+                            <small class="char-counter">0/70</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="adDescription">Təsvir *</label>
+                            <textarea id="adDescription" name="description" class="form-textarea" placeholder="Məhsul haqqında ətraflı məlumat verin..." required rows="6" maxlength="4000"></textarea>
+                            <small class="char-counter">0/4000</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adPrice">Qiymət *</label>
+                                <div class="price-input">
+                                    <input type="number" id="adPrice" name="price" class="form-input" placeholder="0" required min="0">
+                                    <select class="currency-select">
+                                        <option value="azn">₼</option>
+                                        <option value="usd">$</option>
+                                        <option value="eur">€</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="adCondition">Vəziyyət</label>
+                                <select id="adCondition" name="condition" class="form-select">
+                                    <option value="new">Yeni</option>
+                                    <option value="used">İşlənmiş</option>
+                                    <option value="damaged">Qüsurlu</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photos -->
+                    <div class="form-section">
+                        <h2 class="section-title">Şəkillər</h2>
+                        <div class="photo-upload">
+                            <div class="upload-area" id="uploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Şəkilləri buraya sürükləyin və ya klikləyin</p>
+                                <input type="file" id="photoInput" multiple accept="image/*" hidden>
+                                <button type="button" class="upload-btn" onclick="document.getElementById('photoInput').click()">
+                                    Şəkil seç
+                                </button>
+                            </div>
+                            <div class="photo-preview" id="photoPreview">
+                                <!-- Preview images will be added here -->
+                            </div>
+                            <small class="upload-info">Maksimum 10 şəkil. JPEG, PNG formatında. Hər biri maksimum 5MB.</small>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-section">
+                        <h2 class="section-title">Ünvan</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Şəhər *</label>
+                                <select id="city" name="city" class="form-select" required>
+                                    <option value="">Şəhər seçin</option>
+                                    <option value="baku">Bakı</option>
+                                    <option value="ganja">Gəncə</option>
+                                    <option value="sumgayit">Sumqayıt</option>
+                                    <option value="mingachevir">Mingəçevir</option>
+                                    <option value="quba">Quba</option>
+                                    <option value="sheki">Şəki</option>
+                                    <option value="lankaran">Lənkəran</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="district">Rayon</label>
+                                <select id="district" name="district" class="form-select">
+                                    <option value="">Rayon seçin</option>
+                                    <option value="nasimi">Nəsimi</option>
+                                    <option value="yasamal">Yasamal</option>
+                                    <option value="sabail">Səbail</option>
+                                    <option value="narimanov">Nərimanov</option>
+                                    <option value="khatai">Xətai</option>
+                                    <option value="binagadi">Binəqədi</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Dəqiq ünvan</label>
+                            <input type="text" id="address" name="address" class="form-input" placeholder="Küçə, ev nömrəsi...">
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Əlaqə Məlumatları</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Ad *</label>
+                                <input type="text" id="contactName" name="contactName" class="form-input" placeholder="Adınız" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactPhone">Telefon nömrəsi *</label>
+                                <input type="tel" id="contactPhone" name="phone" class="form-input" placeholder="+994 XX XXX XX XX" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">E-mail</label>
+                            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="email@example.com">
+                        </div>
+
+                        <div class="contact-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showPhone" checked>
+                                <span class="checkmark"></span>
+                                Telefon nömrəsini göstər
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="showEmail">
+                                <span class="checkmark"></span>
+                                E-mail ünvanını göstər
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Premium Options -->
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-crown"></i>
+                            Premium Seçimlər
+                        </h2>
+                        
+                        <div class="premium-options">
+                            <label class="premium-option">
+                                <input type="checkbox" name="premium" value="top">
+                                <div class="option-content">
+                                    <div class="option-header">
+                                        <i class="fas fa-arrow-up"></i>
+                                        <span>Top elan (7 gün)</span>
+                                        <span class="price">15 ₼</span>
+                                    </div>
+                                    <p>Elanınız axtarış nəticələrində ən yuxarıda görünəcək</p>
+                                </div>
+                            </label>
+
+                            <label class="premium-option">
+                                <input type="checkbox" name="premium" value="urgent">
+                                <div class="option-content">
+                                    <div class="option-header">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>Təcili elan (3 gün)</span>
+                                        <span class="price">8 ₼</span>
+                                    </div>
+                                    <p>Elanınız "Təcili" işarəsi ilə görünəcək</p>
+                                </div>
+                            </label>
+
+                            <label class="premium-option">
+                                <input type="checkbox" name="premium" value="highlight">
+                                <div class="option-content">
+                                    <div class="option-header">
+                                        <i class="fas fa-star"></i>
+                                        <span>Rəngli elan (5 gün)</span>
+                                        <span class="price">5 ₼</span>
+                                    </div>
+                                    <p>Elanınız rəngli fonla vurğulanacaq</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Submit -->
+                    <div class="form-section">
+                        <div class="terms-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="agreeTerms" required>
+                                <span class="checkmark"></span>
+                                <a href="#" class="terms-link">İstifadə qaydaları</a> və <a href="#" class="terms-link">Məxfilik siyasəti</a> ilə razıyam
+                            </label>
+                        </div>
+
+                        <div class="submit-section">
+                            <button type="button" class="preview-btn">
+                                <i class="fas fa-eye"></i>
+                                Önizləmə
+                            </button>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-check"></i>
+                                Elanı yerləşdir
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 tap.az. Bütün hüquqlar qorunur.</p>
+        </div>
+    </footer>
+
+    <script src="add_script.js"></script>
+</body>
+</html>
